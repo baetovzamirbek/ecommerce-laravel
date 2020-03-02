@@ -10,7 +10,7 @@ class ShowProductsController extends Controller
 {
     public function index()
     {
-        $all = App\showProducts::getAll();
+        $all = App\showProducts::getAll('products');
         return view('index',  ['data' => $all]);
     }
 
@@ -29,6 +29,15 @@ class ShowProductsController extends Controller
 
     public function cart()
     {
-        return View('cart');
+        $arr = [];
+        $quant = [];
+        $all = App\showProducts::getAll('cart');
+        foreach ($all as $product) {
+            $id = $product->product_id;
+            $quantity = $product->quantity;            
+            array_push($arr, App\showProducts::getOne($id));
+            array_push($quant, ['quantity'=> $quantity]);
+        }
+        return View('cart',  ['data' => $arr, 'quantity' => $quant]);
     }
 }

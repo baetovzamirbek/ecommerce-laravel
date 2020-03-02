@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class showProducts extends Model
 {
-     public static function getAll()
+     public static function getAll($table)
     {
-        $data = DB::table('products')->get();
+        $data = DB::table($table)->get();
         return $data;
     }
 
@@ -21,7 +21,7 @@ class showProducts extends Model
 
     public static function addToCart($id)
     {
-        DB::table('cart')->insert(['product_id' => $id]);
+        DB::table('cart')->insert(['product_id' => $id, 'quantity' => 1]);
     }
 
     public static function checkCart($id)
