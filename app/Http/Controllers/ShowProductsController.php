@@ -23,21 +23,28 @@ class ShowProductsController extends Controller
 
     public function addCart(Request $request)
     {
-        $arr =$request->all();
-        $one = App\showProducts::addToCart($arr['id']);        
+        $arr = $request->all();
+        $one = App\showProducts::addToCart($arr['id']);
     }
-
+    public function deleteCart(Request $request)
+    {
+        $arr = $request->all();
+        App\showProducts::deleteFromCart($arr['id']);
+    }
     public function cart()
     {
         $arr = [];
         $quant = [];
+        $total = 0;
         $all = App\showProducts::getAll('cart');
         foreach ($all as $product) {
             $id = $product->product_id;
-            $quantity = $product->quantity;            
-            array_push($arr, App\showProducts::getOne($id));
-            array_push($quant, ['quantity'=> $quantity]);
+            $quantity = $product->quantity;
+            $data = App\showProducts::getOne($id);
+            array_push($arr, $data);
+            $total = $total + $data->price * $quantity;
+            array_push($quant, ['quantity' => $quantity]);
         }
-        return View('cart',  ['data' => $arr, 'quantity' => $quant]);
+        return View('cart',  ['data' => $arr, 'quantity' => $quant, 'total' => $total]);
     }
 }

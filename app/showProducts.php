@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class showProducts extends Model
 {
-     public static function getAll($table)
+    public static function getAll($table)
     {
         $data = DB::table($table)->get();
         return $data;
@@ -27,5 +27,10 @@ class showProducts extends Model
     public static function checkCart($id)
     {
         return DB::table('cart')->where('product_id', $id)->exists();
+    }
+
+    public static function deleteFromCart($id)
+    {
+        return DB::table('cart')->where('product_id', $id)->delete();
     }
 }
