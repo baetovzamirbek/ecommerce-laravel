@@ -26,11 +26,13 @@ class ShowProductsController extends Controller
         $arr = $request->all();
         $one = App\showProducts::addToCart($arr['id']);
     }
+
     public function deleteCart(Request $request)
     {
         $arr = $request->all();
         App\showProducts::deleteFromCart($arr['id']);
     }
+
     public function cart()
     {
         $arr = [];
@@ -46,5 +48,11 @@ class ShowProductsController extends Controller
             array_push($quant, ['quantity' => $quantity]);
         }
         return View('cart',  ['data' => $arr, 'quantity' => $quant, 'total' => $total]);
+    }
+
+    public function updateCart(Request $request)
+    {
+        $arr = $request->all();
+        App\showProducts::updateCart($arr['id'], $arr['button']);
     }
 }

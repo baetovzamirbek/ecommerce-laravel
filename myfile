@@ -1,0 +1,13 @@
+php artisan make:migration create_task_table
+php artisan migrate:refresh
+php artisan migrate:reset
+php artisan db:seed
+
+php artisan make:model Task -m
+php artisan make:controller TasksController
+
+php artisan make:model Post -mc
+
+
+
+return Response()->json($arr);

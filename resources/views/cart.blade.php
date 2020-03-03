@@ -27,22 +27,22 @@
             <td>&#36 {{ $product->price }}</td>
             <td class="input-group">
               <span class="input-group-btn">
-                <button type="button" id="minus" class="btn btn-default btn-flat minus" data-id="{{ $product->id }}"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-default btn-flat minus" data-id="{{ $product->id }}"><i class="fa fa-minus"></i></button>
               </span>
               <input type="text" class="form-control" value="{{ $quantity[$key]["quantity"] }}" id="{{ $product->id }}" size="2">
               <span class="input-group-btn">
-                <button type="button" id="add" class="btn btn-default btn-flat add" data-id="{{ $product->id }}"><i class="fa fa-plus"></i>
+                <button type="button" class="btn btn-default btn-flat add" data-id="{{ $product->id }}"><i class="fa fa-plus"></i>
                 </button>
               </span>
             </td>
             <td>{{ $quantity[$key]["quantity"] *  $product->price}}</td>
           </tr>
           @endforeach
-          <td colspan="6" align="right">Total: &#36 {{ $total }}</td>
           @if(! $data )
           <td colspan="6" align="center">Shopping cart empty</td>
+          @else
+          <td colspan="6" align="right">Total: &#36 {{ $total }}</td>
           @endif
-
         </tbody>
       </table>
 
