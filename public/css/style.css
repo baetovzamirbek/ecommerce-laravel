@@ -8,9 +8,7 @@
   padding-right: 15px;
 }
 
-.card {
-  height: 23rem;
-}
+
 .card-img-top {
   width: 16rem;
 }
@@ -29,3 +27,7 @@ h5 {
 }
 
 /*cart_view.php*/
+a, a:hover {
+  text-decoration: none;
+  color: #000;
+}

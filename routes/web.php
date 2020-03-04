@@ -2,7 +2,7 @@
 
 Route::get('/', 'ShowProductsController@index');
 Route::get('/product/{id}', 'ShowProductsController@product');
-Route::post('/cart/add', 'ShowProductsController@addCart');
-Route::post('/cart/delete', 'ShowProductsController@deleteCart');
-Route::post('/cart/update', 'ShowProductsController@updateCart');
-Route::get('/cart', 'ShowProductsController@cart');
+Route::post('/cart/add', 'CartController@addCart');
+Route::post('/cart/delete', 'CartController@deleteCart');
+Route::post('/cart/update', 'CartController@updateCart');
+Route::get('/cart', 'CartController@cart');
