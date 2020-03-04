@@ -6,7 +6,6 @@
      <div class="col">
        <h4 class="pb-3">{{ $product->name }}</h4>
        <h4 class="pb-3">{{ $product->price }} сом</h4>
-       <h5>Description:</h5>
        <span class="pb-3">{{ $product->description }}</span>
      </div>
    </div>
