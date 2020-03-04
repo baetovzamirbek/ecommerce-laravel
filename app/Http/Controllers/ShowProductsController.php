@@ -16,8 +16,8 @@ class ShowProductsController extends Controller
 
     public function product($id)
     {
-        $single = App\showProducts::getOne($id);
+        $product = App\showProducts::getOne($id);
         $check = App\showProducts::checkCart($id);
-        return View('product', ['product' => $single, 'check' => $check]);
+        return View('product', ['product' => $product, 'check' => $check]);
     }
 }
